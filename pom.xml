@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (C) 2026 Evolved Binary Ltd
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this
+       list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice,
+       this list of conditions and the following disclaimer in the documentation
+       and/or other materials provided with the distribution.
+
+    3. Neither the name of the copyright holder nor the names of its contributors
+       may be used to endorse or promote products derived from this software without
+       specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+    IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+    INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+    OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>xyz.elemental.fork.org.exist-db</groupId>
+        <artifactId>exist-modules</artifactId>
+        <version>7.7.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+
+    <artifactId>exist-doom-runner</artifactId>
+    <packaging>jar</packaging>
+
+    <name>eXist-db Doom Runner Module</name>
+    <description>eXist-db XQuery Doom Runner Module - wraps MochaDoom game engine</description>
+
+    <scm>
+        <connection>scm:git:https://github.com/evolvedbinary/elemental.git</connection>
+        <developerConnection>scm:git:https://github.com/evolvedbinary/elemental.git</developerConnection>
+        <url>scm:git:https://github.com/evolvedbinary/elemental.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>xyz.elemental.fork.org.exist-db</groupId>
+            <artifactId>exist-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.mochadoom</groupId>
+            <artifactId>mochadoom</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration>
+                    <licenseSets>
+                        <licenseSet>
+                            <!--
+                                Elemental License - (LGPL 2.1 only)
+                            -->
+                            <header>${project.parent.relativePath}/../../elemental-parent/elemental-LGPL-21-ONLY-license.template.txt</header>
+                            <excludes>
+                                <exclude>pom.xml</exclude>
+                                <exclude>src/**</exclude>
+                            </excludes>
+                        </licenseSet>
+
+                        <licenseSet>
+                            <!--
+                                Combined: Elemental License (LGPL 2.1 only) + eXist-db License (LGPL 2.1 or later)
+                            -->
+                            <multi>
+                                <header>${project.parent.relativePath}/../../elemental-parent/elemental-LGPL-21-ONLY-license.template.txt</header>
+                                <separator><![CDATA[NOTE: Parts of this file contain code from 'The eXist-db Authors'.
+      The original license header is included below.
+
+=====================================================================
+                                        ]]></separator>
+                                <header>${project.parent.relativePath}/../../exist-parent/existdb-LGPL-21-license.template.txt</header>
+                            </multi>
+                            <includes>
+                                <include>pom.xml</include>
+                            </includes>
+                        </licenseSet>
+
+                        <licenseSet>
+                            <!--
+                                eXist-db License (LGPL 2.1 or later)
+                            -->
+                            <header>${project.parent.relativePath}/../../exist-parent/existdb-LGPL-21-license.template.txt</header>
+                            <excludes>
+                                <exclude>pom.xml</exclude>
+                            </excludes>
+                        </licenseSet>
+
+                    </licenseSets>
+
+                    <headerDefinitions>
+                        <headerDefinition>${project.parent.relativePath}/../../exist-parent/xquery-license-style.xml</headerDefinition>
+                    </headerDefinitions>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
