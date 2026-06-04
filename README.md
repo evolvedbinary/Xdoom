@@ -1,7 +1,7 @@
 # doom-runner — XQuery Module
 This project was vibe coded by Younes Bahloul and Claude name. It was produced as a fun demo for the XQuery and XML Databases workshop at XML Prague 2026 conference
 
-Runs the [MochaDoom](https://github.com/mochadoom/mochadoom) Java game engine inside Elemental and streams live game frames to any browser via an embedded WebSocket server.
+Runs a modified version of [MochaDoom](https://github.com/evolvedbinary/mochadoom) Java game engine inside Elemental and streams live game frames to any browser via an embedded WebSocket server.
 
 ---
 
